@@ -3,22 +3,21 @@ package com.wish.steps;
 import com.wish.hooks.Hooks;
 import com.wish.sites.WishSite;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
-public class AddFirstProductStepDefs {
+public class LoginStepDefs {
 
     public WishSite wishSite;
 
-    public AddFirstProductStepDefs(Hooks hooksClass)
+    public LoginStepDefs(Hooks hooksClass)
     {
         this.wishSite = hooksClass.getWishSite();
     }
 
-    @Given("I login to Wish")
-    public void iLoginToWish()
-    {
+    @Given("I navigate to Wish")
+    public void iNavigateToWish() throws InterruptedException {
         wishSite.getLogin().navigate();
         wishSite.getLogin().validateLoginPage();
         wishSite.getLogin().loginWithValidCredentials();
+        Thread.sleep(60000);
     }
 }

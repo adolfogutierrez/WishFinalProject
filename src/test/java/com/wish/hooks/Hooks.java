@@ -6,6 +6,7 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -27,7 +28,10 @@ public class Hooks {
     public void setUp()
     {
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Properties.SHORT_WAIT, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Properties.MID_WAIT, TimeUnit.SECONDS);
+        ChromeOptions ops = new ChromeOptions();
+        ops.addArguments("--disable-notifications");
+        ops.addArguments("start-maximized");
         wishSite = new WishSite(driver);
 
     }
